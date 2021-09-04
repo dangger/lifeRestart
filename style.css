@@ -38,9 +38,9 @@
 
 @font-face {
     font-family: 'iconfont';
-    src: url('iconfont.woff2') format('woff2'),
-            url('iconfont.woff') format('woff'),
-            url('iconfont.ttf') format('truetype');
+    src: url('iconfont.woff2?t=1628944689555') format('woff2'),
+            url('iconfont.woff?t=1628944689555') format('woff'),
+            url('iconfont.ttf?t=1628944689555') format('truetype');
 }
 
 html {
@@ -67,7 +67,7 @@ html {
 
 .mainbtn {
     position: fixed;
-    top: 65%;
+    top: 75%;
     left: 50%;
     padding: 0.8rem 1rem;
     border: 1px #ccc solid;

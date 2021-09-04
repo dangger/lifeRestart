@@ -31,7 +31,8 @@ class App{
         <div id="main">
             <div id="title">
                 人生重开模拟器<br>
-                <div style="font-size:1.5rem; font-weight:normal;">加载中...</div>
+                <div style="font-size:1.5rem; font-weight:normal;">加载中...</div><br>
+                <div style="font-size:1rem; font-weight:normal;">dangge修改版，原版https://liferestart.syaro.io/view/</div>
             </div>
         </div>
         `);
@@ -40,11 +41,52 @@ class App{
         const indexPage = $(`
         <div id="main">
             <div id="cnt" class="head">已重开1次</div>
-            <button id="rank">排行榜</button>
             <div id="title">
                 人生重开模拟器<br>
                 <div style="font-size:1.5rem; font-weight:normal;">这垃圾人生一秒也不想呆了</div>
-            </div>
+                <div style="font-size:1rem; font-weight:normal;">dangge修改版<br>
+                原版https://liferestart.syaro.io/view/</div>
+            </div font-weight: bold;"><br>
+            <div class="notify">建议充分体验原版后再游玩本版本</div>
+            <style>  
+    .notify{ 
+        color: #39C5BB;
+        font-size: 0.8rem;
+        margin: 10px;
+        animation: changeshadow 1s  ease-in  infinite ;
+        /* 其它浏览器兼容性前缀 */
+        -webkit-animation: changeshadow 1s linear infinite;
+        -moz-animation: changeshadow 1s linear infinite;
+        -ms-animation: changeshadow 1s linear infinite;
+        -o-animation: changeshadow 1s linear infinite;
+    }  
+    @keyframes changeshadow {  
+        0%{ text-shadow: 0 0 4px #39C5BB}  
+        50%{ text-shadow: 0 0 40px #39C5BB}  
+        100%{ text-shadow: 0 0 4px #39C5BB}  
+    }
+    /* 添加兼容性前缀 */
+    @-webkit-keyframes changeshadow {
+      0%{ text-shadow: 0 0 4px #39C5BB}  
+          50%{ text-shadow: 0 0 40px #39C5BB}  
+          100%{ text-shadow: 0 0 4px #39C5BB}  
+    }
+    @-moz-keyframes changeshadow {
+        0%{ text-shadow: 0 0 4px #39C5BB}  
+            50%{ text-shadow: 0 0 40px #39C5BB}  
+            100%{ text-shadow: 0 0 4px #39C5BB}  
+    }
+    @-ms-keyframes changeshadow {
+        0%{ text-shadow: 0 0 4px #39C5BB}  
+            50%{ text-shadow: 0 0 40px #39C5BB}  
+            100%{ text-shadow: 0 0 4px #39C5BB}  
+    }
+    @-o-keyframes changeshadow {
+        0%{ text-shadow: 0 0 4px #39C5BB}  
+            50%{ text-shadow: 0 0 40px #39C5BB}  
+            100%{ text-shadow: 0 0 4px #39C5BB}  
+    }
+</style> 
             <button id="restart" class="mainbtn"><span class="iconfont">&#xe6a7;</span>立即重开</button>
         </div>
         `);
@@ -61,9 +103,9 @@ class App{
         const talentPage = $(`
         <div id="main">
             <div class="head" style="font-size: 1.6rem">天赋抽卡</div>
-            <button id="random" class="mainbtn" style="top: 50%;">10连抽！</button>
+            <button id="random" class="mainbtn" style="top: 50%;">n连抽！</button>
             <ul id="talents" class="selectlist"></ul>
-            <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">请选择3个</button>
+            <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">请选择不多于10个</button>
         </div>
         `);
 
@@ -85,8 +127,8 @@ class App{
                                 li.removeClass('selected')
                                 this.#talentSelected.delete(talent);
                             } else {
-                                if(this.#talentSelected.size==3) {
-                                    this.hint('只能选3个天赋');
+                                if(this.#talentSelected.size==10) {
+                                    this.hint('只能选10个天赋');
                                     return;
                                 }
 
@@ -113,8 +155,8 @@ class App{
         talentPage
             .find('#next')
             .click(()=>{
-                if(this.#talentSelected.size!=3) {
-                    this.hint('请选择3个天赋');
+                if(this.#talentSelected.size>10) {
+                    this.hint('请选择小于10个天赋');
                     return;
                 }
                 this.#totalMax = 20 + this.#life.getTalentAllocationAddition(Array.from(this.#talentSelected).map(({id})=>id));
